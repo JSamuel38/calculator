@@ -30,7 +30,7 @@ function operate(num1, operator, num2) {
 }
 //Deals with floating point imprecision
 function strip(number) {
-  return (parseFloat(number).toPrecision(12));
+return (parseFloat(number).toPrecision(12));
 }
 //Displays to result box
 let displayValue = "";
@@ -47,16 +47,17 @@ function updateDisplay(value) {
     displayValue = '';
   }
   displayValue += value;
-  parseInt(displayValue);
+  if (displayValue) {
+    (op.num1 === null || op.num1 === NaN ) ? (op.num1 = parseFloat(displayValue)) : 
+    (op.num2 = parseFloat(displayValue)); 
+  }
+  console.log(op);
   result.textContent = displayValue;
-  return displayValue;
 }
 //Makes number buttons functional
 const numbers = document.querySelectorAll('.numberButton');
 numbers.forEach((number) => {
   number.addEventListener('click', (e) => {
-    (op.num1 === null) ? (op.num1 = e.target.textContent) : 
-    (op.num2 = e.target.textContent); 
     updateDisplay(e.target.textContent);
   });
 });
@@ -64,6 +65,9 @@ numbers.forEach((number) => {
 const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () => {
   displayValue = '';
+  op.num1 = null;
+  op.num2 = null;
+  op.operator = '';
   updateDisplay(displayValue);
 });
 //Object to track numbers and operators for calculations
@@ -86,6 +90,9 @@ operateButtons.forEach((operateButton) => {
         break;
     }
     op.operator = chosenOp;
+    displayValue = '';
+    result.textContent = displayValue;
+    console.log(op);
   });
 });
 //Execute operation when equals is clicked
@@ -94,6 +101,6 @@ equalsButton.addEventListener('click', () => {
   let out = operate(op.num1, op.operator, op.num2);
   result.textContent = out;
   op.num1 = null;
-  op.operater = '';
+  op.operator = '';
   op.num2 = null;
 });
