@@ -34,6 +34,7 @@ return (parseFloat(number).toPrecision(12));
 }
 //Displays to result box
 let displayValue = "";
+let first = true;
 const result = document.querySelector('.result')
 function updateDisplay(value) {
   //Prevents multiple decimal points
@@ -47,9 +48,10 @@ function updateDisplay(value) {
     displayValue = '';
   }
   displayValue += value;
-  if (displayValue) {
-    (op.num1 === null || op.num1 === NaN ) ? (op.num1 = parseFloat(displayValue)) : 
-    (op.num2 = parseFloat(displayValue)); 
+  if (displayValue && first) {          //If first input then set to num1
+    op.num1 = parseFloat(displayValue); 
+  } else if (displayValue) {            //Second input then set to num2
+    op.num2 = parseFloat(displayValue); //Allows first input to be a decimal value
   }
   result.textContent = displayValue;
 }
@@ -90,6 +92,7 @@ operateButtons.forEach((operateButton) => {
     }
     op.operator = chosenOp;
     displayValue = '';
+    first = false;
     result.textContent = displayValue;
   });
 });
@@ -107,4 +110,5 @@ equalsButton.addEventListener('click', () => {
   op.num1 = null;
   op.operator = '';
   op.num2 = null;
+  first = true;
 });
