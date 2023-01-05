@@ -29,9 +29,12 @@ function operate(num1, operator, num2) {
       return divide(num1, num2);
   }
 }
-//Deals with floating point imprecision
+//Deals with floating point imprecision and removes unecessary zeroes
 function strip(number) {
-return (parseFloat(number).toPrecision(12));
+  for (let i = 1; i < 13; i++) {
+    if (number == parseFloat(number).toPrecision(i)) return number;
+  }
+  return parseFloat(number).toPrecision(12);
 }
 //Displays to result box
 let displayValue = "";
