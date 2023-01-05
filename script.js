@@ -33,10 +33,16 @@ function strip(number) {
 let displayValue = "";
 const result = document.querySelector('.result')
 function updateDisplay(value) {
+  //Prevents multiple decimal points
   if ('.' === value && displayValue.includes('.')) return;
+  //Prevents unnecessary zeroes e.g 000145 => 145
   let firstChar = displayValue.substring(0, 1);
-  if ('0' === value && firstChar.includes('0') && 
-    !displayValue.includes('.')) return;
+  let secondChar = displayValue.substring(1, 2);
+  if ('0' === value && firstChar === '0' &&
+   !displayValue.includes('.')) return;
+  if (firstChar === '0' && value !== '.' && secondChar !== '.') {
+    displayValue = '';
+  }
   displayValue += value;
   parseInt(displayValue);
   result.textContent = displayValue;
