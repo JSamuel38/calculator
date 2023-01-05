@@ -34,6 +34,9 @@ let displayValue = "";
 const result = document.querySelector('.result')
 function updateDisplay(value) {
   if ('.' === value && displayValue.includes('.')) return;
+  let firstChar = displayValue.substring(0, 1);
+  if ('0' === value && firstChar.includes('0') && 
+    !displayValue.includes('.')) return;
   displayValue += value;
   parseInt(displayValue);
   result.textContent = displayValue;
