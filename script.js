@@ -9,6 +9,7 @@ function multiply(num1, num2) {
   return strip(num1 * num2);
 }
 function divide(num1, num2) {
+  if (num2 == 0) return "Can't divide by zero";
   return strip(num1 / num2);
 }
 function equals(total) {
@@ -65,11 +66,7 @@ numbers.forEach((number) => {
 //Make clear button functional
 const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () => {
-  displayValue = '';
-  op.num1 = null;
-  op.num2 = null;
-  op.operator = '';
-  updateDisplay(displayValue);
+  clear();
 });
 //Object to track numbers and operators for calculations
 op = {
@@ -112,3 +109,11 @@ equalsButton.addEventListener('click', () => {
   op.num2 = null;
   first = true;
 });
+//Functionality for clear button (reset)
+function clear() {
+  displayValue = '';
+  op.num1 = null;
+  op.num2 = null;
+  op.operator = '';
+  updateDisplay(displayValue);
+}
