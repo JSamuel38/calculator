@@ -11,9 +11,12 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
   return strip(num1 / num2);
 }
+function equals(total) {
+  updateDisplay(total);
+}
 /*Operate takes in an operator and executes one of the basic operations on the 
 given numbers */
-function operate(num1, num2, operator) {
+function operate(num1, operator, num2) {
   switch (operator) {
     case '+':
       return add(num1, num2);
@@ -46,6 +49,7 @@ function updateDisplay(value) {
   displayValue += value;
   parseInt(displayValue);
   result.textContent = displayValue;
+  return displayValue;
 }
 //Makes number buttons functional
 const numbers = document.querySelectorAll('.numberButton');
@@ -59,4 +63,27 @@ const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () => {
   displayValue = '';
   updateDisplay(displayValue);
+});
+//Object to track numbers and operators for calculations
+op = {
+  num1: 2,
+  operator: '',
+  num2: 2
+}
+//Allow operations to be carried out
+const operateButtons = document.querySelectorAll('.operate')
+operateButtons.forEach((operateButton) => {
+  operateButton.addEventListener('click', (e) => {
+    let chosenOp = e.target.textContent;
+    switch (chosenOp) {
+      case 'x':
+        chosenOp = '*';
+        break;
+      case '÷':
+        chosenOp = '/';
+        break;
+    }
+    op.operator = chosenOp;
+    console.log(operate(op.num1, op.operator, op.num2))
+  });
 });
