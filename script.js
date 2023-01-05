@@ -29,3 +29,19 @@ function operate(num1, num2, operator) {
 function strip(number) {
   return (parseFloat(number).toPrecision(12));
 }
+//Displays to result box
+let displayValue = "";
+const result = document.querySelector('.result')
+function updateDisplay(value) {
+  if ('.' === value && displayValue.includes('.')) return;
+  displayValue += value;
+  parseInt(displayValue);
+  result.textContent = displayValue;
+}
+//Makes number buttons functional
+const numbers = document.querySelectorAll('.numberButton');
+numbers.forEach((number) => {
+  number.addEventListener('click', (e) => {
+    updateDisplay(e.target.textContent);
+  });
+});
