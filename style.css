@@ -1,0 +1,23 @@
+.calcBody {
+  background-color: #efefef;
+  border: solid 0.25rem;
+  border-radius: 1rem;
+  padding: 2rem;
+  height: 34rem;
+  margin: auto;
+  margin-top: 4rem;
+  width: 22rem;
+}
+
+.resultBox {
+  background-color: #fff;
+  border: solid 0.25rem;
+  height: 9rem;
+}
+
+.result {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  margin-top: 5.5rem;
+  text-align: right;
+}
