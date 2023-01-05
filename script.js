@@ -117,3 +117,15 @@ function clear() {
   op.operator = '';
   updateDisplay(displayValue);
 }
+//Functionality for backspace button that deletes last argument for operate
+const backspace = document.querySelector('.backspace');
+backspace.addEventListener('click', () => {
+  if (op.num1 && op.num2 !== null) {
+    result.textContent = result.textContent.slice(0, result.textContent.length - 1);
+    op.num2 = result.textContent;
+  }
+  if (op.num1 && op.num2 === null) {
+    result.textContent = result.textContent.slice(0, result.textContent.length - 1);
+    op.num1 = result.textContent;
+  }
+});

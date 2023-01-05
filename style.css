@@ -109,4 +109,5 @@ body {
   position: absolute;
   text-align: center;
   width: 6rem;
+  z-index: 10;
 }
