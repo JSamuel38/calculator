@@ -107,7 +107,7 @@ equalsButton.addEventListener('click', () => {
   }
   let out = operate(op.num1, op.operator, op.num2);
   result.textContent = out;
-  op.num1 = null;
+  op.num1 = out;
   op.operator = '';
   op.num2 = null;
   first = true;
