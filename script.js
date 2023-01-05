@@ -51,7 +51,6 @@ function updateDisplay(value) {
     (op.num1 === null || op.num1 === NaN ) ? (op.num1 = parseFloat(displayValue)) : 
     (op.num2 = parseFloat(displayValue)); 
   }
-  console.log(op);
   result.textContent = displayValue;
 }
 //Makes number buttons functional
@@ -92,12 +91,17 @@ operateButtons.forEach((operateButton) => {
     op.operator = chosenOp;
     displayValue = '';
     result.textContent = displayValue;
-    console.log(op);
   });
 });
 //Execute operation when equals is clicked
 const equalsButton = document.querySelector('.equals');
 equalsButton.addEventListener('click', () => {
+  if (op.num1 && !op.num2) {
+    result.textContent = '';
+    op.num1 = null;
+    displayValue = '';
+    return;
+  }
   let out = operate(op.num1, op.operator, op.num2);
   result.textContent = out;
   op.num1 = null;
