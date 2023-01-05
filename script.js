@@ -25,7 +25,7 @@ function operate(num1, num2, operator) {
       return divide(num1, num2);
   }
 }
-//Deals with floating point inprecision
+//Deals with floating point imprecision
 function strip(number) {
   return (parseFloat(number).toPrecision(12));
 }
