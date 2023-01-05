@@ -11,8 +11,8 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
   return strip(num1 / num2);
 }
-//Operate takes in an operator and executes one of the basic operations on the 
-//given numbers
+/*Operate takes in an operator and executes one of the basic operations on the 
+given numbers */
 function operate(num1, num2, operator) {
   switch (operator) {
     case '+':
