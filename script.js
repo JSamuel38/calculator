@@ -55,6 +55,8 @@ function updateDisplay(value) {
 const numbers = document.querySelectorAll('.numberButton');
 numbers.forEach((number) => {
   number.addEventListener('click', (e) => {
+    (op.num1 === null) ? (op.num1 = e.target.textContent) : 
+    (op.num2 = e.target.textContent); 
     updateDisplay(e.target.textContent);
   });
 });
@@ -66,9 +68,9 @@ clearButton.addEventListener('click', () => {
 });
 //Object to track numbers and operators for calculations
 op = {
-  num1: 2,
+  num1: null,
   operator: '',
-  num2: 2
+  num2: null
 }
 //Allow operations to be carried out
 const operateButtons = document.querySelectorAll('.operate')
@@ -84,6 +86,11 @@ operateButtons.forEach((operateButton) => {
         break;
     }
     op.operator = chosenOp;
-    console.log(operate(op.num1, op.operator, op.num2))
   });
+});
+//Execute operation when equals is clicked
+const equalsButton = document.querySelector('.equals');
+equalsButton.addEventListener('click', () => {
+  let out = operate(op.num1, op.operator, op.num2);
+  result.textContent = out;
 });
