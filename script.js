@@ -54,3 +54,9 @@ numbers.forEach((number) => {
     updateDisplay(e.target.textContent);
   });
 });
+//Make clear button functional
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+  displayValue = '';
+  updateDisplay(displayValue);
+});
